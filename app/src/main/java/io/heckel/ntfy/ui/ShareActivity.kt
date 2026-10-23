@@ -60,24 +60,10 @@ class ShareActivity : AppCompatActivity() {
         Log.init(this) // Init logs in all entry points
         Log.d(TAG, "Create $this with intent $intent")
 
-        // Action bar
-        val toolbarLayout = findViewById<View>(R.id.app_bar_drawer)
-        val dynamicColors = repository.getDynamicColorsEnabled()
-        val darkMode = isDarkThemeOn(this)
-        val statusBarColor = Colors.statusBarNormal(this, dynamicColors, darkMode)
-        val toolbarTextColor = Colors.toolbarTextColor(this, dynamicColors, darkMode)
-        toolbarLayout.setBackgroundColor(statusBarColor)
-        
-        val toolbar = toolbarLayout.findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
-        toolbar.setTitleTextColor(toolbarTextColor)
-        toolbar.setNavigationIconTint(toolbarTextColor)
-        toolbar.overflowIcon?.setTint(toolbarTextColor)
-        setSupportActionBar(toolbar)
-        title = getString(R.string.share_title)
-        
-        // Set system status bar appearance
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
-            Colors.shouldUseLightStatusBar(dynamicColors, darkMode)
+        // iOS-style navigation bar and large title
+        val appBarLayout = findViewById<com.google.android.material.appbar.AppBarLayout>(R.id.app_bar_drawer)
+        IosUi.setupAppBar(this, appBarLayout, compact = true)
+        IosUi.setTitle(this, getString(R.string.share_title))
 
         // Show 'Back' button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -87,7 +73,6 @@ class ShareActivity : AppCompatActivity() {
         defaultBaseUrl = repository.getDefaultBaseUrl()
 
         // UI elements
-        val root: View = findViewById(R.id.share_root_view)
         contentText = findViewById(R.id.share_content_text)
         contentImage = findViewById(R.id.share_content_image)
         contentFileBox = findViewById(R.id.share_content_file_box)
@@ -95,10 +80,8 @@ class ShareActivity : AppCompatActivity() {
         contentFileIcon = findViewById(R.id.share_content_file_icon)
         topicText = findViewById(R.id.share_topic_text)
         baseUrlLayout = findViewById(R.id.share_base_url_layout)
-        baseUrlLayout.background = root.background
         baseUrlLayout.makeEndIconSmaller(resources) // Hack!
         baseUrlText = findViewById(R.id.share_base_url_text)
-        baseUrlText.background = root.background
         baseUrlText.hint = defaultBaseUrl ?: appBaseUrl
         useAnotherServerCheckbox = findViewById(R.id.share_use_another_server_checkbox)
         suggestedTopicsList = findViewById(R.id.share_suggested_topics)

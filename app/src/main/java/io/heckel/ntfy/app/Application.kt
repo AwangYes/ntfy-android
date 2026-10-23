@@ -3,7 +3,6 @@ package io.heckel.ntfy.app
 import android.app.Application
 import android.net.ConnectivityManager
 import android.net.Network
-import com.google.android.material.color.DynamicColors
 import io.heckel.ntfy.db.Repository
 import io.heckel.ntfy.service.SubscriberServiceManager
 import io.heckel.ntfy.util.Log
@@ -25,9 +24,8 @@ class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (repository.getDynamicColorsEnabled()) {
-            DynamicColors.applyToActivitiesIfAvailable(this)
-        }
+        // The iOS-style palette is intentionally fixed; wallpaper-based dynamic
+        // colors would make the surfaces and accents inconsistent across screens.
         registerNetworkCallback()
     }
 

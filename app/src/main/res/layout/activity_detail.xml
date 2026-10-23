@@ -18,7 +18,7 @@
         android:id="@+id/detail_content_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/detail_activity_background"
+        android:background="@color/ios_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -37,10 +37,10 @@
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/ios_list_bottom_padding"
                 android:clipToPadding="false"
-                android:background="?android:attr/selectableItemBackground"
+                android:background="@android:color/transparent"
                 app:layoutManager="LinearLayoutManager"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -60,9 +60,11 @@
         <TextView
                 android:id="@+id/detail_no_notifications_text"
                 android:text="@string/detail_no_notifications_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.Ios.CardTitle"
+                android:textSize="20sp"
                 android:padding="10dp" android:gravity="center_horizontal"
                 android:paddingStart="50dp" android:paddingEnd="50dp"/>
         <TextView

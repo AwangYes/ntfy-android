@@ -23,8 +23,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="48dp"
-    android:layout_marginBottom="48dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp"
     android:overScrollMode="ifContentScrolls">
 
   <LinearLayout
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@android:id/message"
-        style="?android:attr/textAppearanceSmall"
+        style="@style/TextAppearance.Ios.Footnote"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginStart="24dp"
@@ -43,13 +43,14 @@
         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="?android:attr/textColorSecondary"/>
+        android:textColor="@color/ios_label_secondary"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Ios.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="?dialogPreferredPadding"
-        android:paddingTop="?dialogPreferredPadding">
+        android:paddingTop="12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@android:id/edit"

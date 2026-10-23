@@ -110,10 +110,8 @@ class AddFragment : DialogFragment(), TrustedCertificateFragment.TrustedCertific
         // Fields for "subscribe page"
         subscribeTopicText = view.findViewById(R.id.add_dialog_subscribe_topic_text)
         subscribeBaseUrlLayout = view.findViewById(R.id.add_dialog_subscribe_base_url_layout)
-        subscribeBaseUrlLayout.background = view.background
         subscribeBaseUrlLayout.makeEndIconSmaller(resources) // Hack!
         subscribeBaseUrlText = view.findViewById(R.id.add_dialog_subscribe_base_url_text)
-        subscribeBaseUrlText.background = view.background
         subscribeBaseUrlText.hint = defaultBaseUrl ?: appBaseUrl
         subscribeInstantDeliveryBox = view.findViewById(R.id.add_dialog_subscribe_instant_delivery_box)
         subscribeInstantDeliveryCheckbox = view.findViewById(R.id.add_dialog_subscribe_instant_delivery_checkbox)

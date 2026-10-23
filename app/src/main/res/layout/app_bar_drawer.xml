@@ -6,12 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    android:background="@color/ios_background"
     android:fitsSystemWindows="true"
+    app:elevation="0dp"
     app:liftOnScroll="false">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="@dimen/ios_nav_bar_height"
+        android:background="@android:color/transparent"
+        android:paddingStart="4dp"
+        android:paddingEnd="8dp"
+        app:navigationIconTint="?attr/colorOnBackground"
+        app:titleTextColor="?attr/colorOnBackground" />
+
+    <TextView
+        android:id="@+id/app_bar_large_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/ios_screen_padding"
+        android:paddingEnd="@dimen/ios_screen_padding"
+        android:paddingTop="2dp"
+        android:paddingBottom="10dp"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:letterSpacing="0"
+        tools:text="Subscribed topics"
+        xmlns:tools="http://schemas.android.com/tools" />
 
 </com.google.android.material.appbar.AppBarLayout>

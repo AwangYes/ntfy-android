@@ -1,16 +1,16 @@
 package io.heckel.ntfy.ui
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import io.heckel.ntfy.BuildConfig
 import io.heckel.ntfy.R
 import io.heckel.ntfy.db.ConnectionState
@@ -24,9 +24,7 @@ import java.util.*
 class MainAdapter(
     private val repository: Repository,
     private val onClick: (Subscription) -> Unit,
-    private val onLongClick: (Subscription) -> Unit,
-    private val countDrawable: Drawable,
-    private val onPrimaryColor: Int
+    private val onLongClick: (Subscription) -> Unit
 ) :
     ListAdapter<Subscription, MainAdapter.SubscriptionViewHolder>(TopicDiffCallback) {
     val selected = mutableSetOf<Long>() // Subscription IDs
@@ -35,7 +33,7 @@ class MainAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscriptionViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_main_item, parent, false)
-        return SubscriptionViewHolder(view, repository, selected, onClick, onLongClick, countDrawable, onPrimaryColor)
+        return SubscriptionViewHolder(view, repository, selected, onClick, onLongClick)
     }
 
     /* Gets current topic and uses it to bind view. */
@@ -64,13 +62,12 @@ class MainAdapter(
         private val repository: Repository,
         private val selected: Set<Long>,
         val onClick: (Subscription) -> Unit,
-        val onLongClick: (Subscription) -> Unit,
-        private val countDrawable: Drawable,
-        private val onPrimaryColor: Int
+        val onLongClick: (Subscription) -> Unit
     ) :
         RecyclerView.ViewHolder(itemView) {
         private var subscription: Subscription? = null
         private val context: Context = itemView.context
+        private val cardView: MaterialCardView = itemView.findViewById(R.id.main_item_card)
         private val imageView: ImageView = itemView.findViewById(R.id.main_item_image)
         private val nameView: TextView = itemView.findViewById(R.id.main_item_text)
         private val statusView: TextView = itemView.findViewById(R.id.main_item_status)
@@ -112,8 +109,10 @@ class MainAdapter(
             val showMutedForeverIcon = (subscription.mutedUntil == 1L || globalMutedUntil == 1L) && !isUnifiedPush
             val showMutedUntilIcon = !showMutedForeverIcon && (subscription.mutedUntil > 1L || globalMutedUntil > 1L) && !isUnifiedPush
             if (subscription.icon != null) {
+                imageView.clearColorFilter()
                 imageView.setImageBitmap(subscription.icon.readBitmapFromUriOrNull(context))
             } else {
+                imageView.setColorFilter(ContextCompat.getColor(context, R.color.md_theme_primary))
                 imageView.setImageResource(R.drawable.ic_sms_gray_24dp)
             }
             nameView.text = displayName(appBaseUrl, subscription)
@@ -130,16 +129,15 @@ class MainAdapter(
             } else {
                 newItemsView.visibility = View.VISIBLE
                 newItemsView.text = if (subscription.newCount <= 99) subscription.newCount.toString() else "99+"
-                newItemsView.setTextColor(onPrimaryColor)
-                newItemsView.background = countDrawable
             }
             itemView.setOnClickListener { onClick(subscription) }
             itemView.setOnLongClickListener { onLongClick(subscription); true }
-            if (selected.contains(subscription.id)) {
-                itemView.setBackgroundColor(Colors.itemSelectedBackground(context))
-            } else {
-                itemView.setBackgroundColor(Color.TRANSPARENT)
-            }
+            val isSelected = selected.contains(subscription.id)
+            cardView.setCardBackgroundColor(
+                if (isSelected) Colors.itemSelectedBackground(context) else Colors.cardBackgroundColor(context)
+            )
+            cardView.strokeWidth = if (isSelected) (1.5f * context.resources.displayMetrics.density).toInt() else 0
+            cardView.strokeColor = Colors.primary(context)
         }
     }
 

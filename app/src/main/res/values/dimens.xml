@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fab_margin">24dp</dimen>
+    <!-- iOS-style spacing and shape tokens -->
+    <dimen name="ios_screen_padding">20dp</dimen>
+    <dimen name="ios_card_padding">16dp</dimen>
+    <dimen name="ios_card_radius">18dp</dimen>
+    <dimen name="ios_control_radius">14dp</dimen>
+    <dimen name="ios_list_spacing">8dp</dimen>
+    <dimen name="ios_icon_tile_size">44dp</dimen>
+    <dimen name="ios_icon_tile_radius">12dp</dimen>
+    <dimen name="ios_separator_height">0.5dp</dimen>
+    <dimen name="ios_list_bottom_padding">96dp</dimen>
+    <dimen name="ios_preference_inset">12dp</dimen>
+    <dimen name="ios_preference_gap">2dp</dimen>
+    <dimen name="ios_nav_bar_height">52dp</dimen>
+    <dimen name="fab_margin">20dp</dimen>
 </resources>

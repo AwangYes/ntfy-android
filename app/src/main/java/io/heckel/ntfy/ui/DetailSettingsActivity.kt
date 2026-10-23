@@ -65,26 +65,12 @@ class DetailSettingsActivity : AppCompatActivity() {
                 .commit()
         }
 
-        val toolbarLayout = findViewById<AppBarLayout>(R.id.app_bar_drawer)
-        val dynamicColors = repository.getDynamicColorsEnabled()
-        val darkMode = isDarkThemeOn(this)
-        val statusBarColor = Colors.statusBarNormal(this, dynamicColors, darkMode)
-        val toolbarTextColor = Colors.toolbarTextColor(this, dynamicColors, darkMode)
-        toolbarLayout.setBackgroundColor(statusBarColor)
-        
-        val toolbar = toolbarLayout.findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
-        toolbar.setTitleTextColor(toolbarTextColor)
-        toolbar.setNavigationIconTint(toolbarTextColor)
-        toolbar.overflowIcon?.setTint(toolbarTextColor)
-        setSupportActionBar(toolbar)
-        
-        // Set system status bar appearance
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
-            Colors.shouldUseLightStatusBar(dynamicColors, darkMode)
-        
+        val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_drawer)
+        IosUi.setupAppBar(this, appBarLayout, compact = true)
+
         // Title
         val displayName = intent.getStringExtra(DetailActivity.EXTRA_SUBSCRIPTION_DISPLAY_NAME) ?: return
-        title = displayName
+        IosUi.setTitle(this, displayName)
 
         // Show 'Back' button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -68,26 +68,8 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
         repository = Repository.getInstance(this)
         serviceManager = SubscriberServiceManager(this)
 
-        val toolbarLayout = findViewById<View>(R.id.app_bar_drawer)
-        val dynamicColors = repository.getDynamicColorsEnabled()
-        val darkMode = isDarkThemeOn(this)
-        val statusBarColor = Colors.statusBarNormal(
-            this,
-            dynamicColors,
-            darkMode
-        )
-        val toolbarTextColor = Colors.toolbarTextColor(this, dynamicColors, darkMode)
-        toolbarLayout.setBackgroundColor(statusBarColor)
-        
-        val toolbar = toolbarLayout.findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
-        toolbar.setTitleTextColor(toolbarTextColor)
-        toolbar.setNavigationIconTint(toolbarTextColor)
-        toolbar.overflowIcon?.setTint(toolbarTextColor)
-        setSupportActionBar(toolbar)
-        
-        // Set system status bar appearance
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
-            Colors.shouldUseLightStatusBar(dynamicColors, darkMode)
+        val appBarLayout = findViewById<com.google.android.material.appbar.AppBarLayout>(R.id.app_bar_drawer)
+        IosUi.setupAppBar(this, appBarLayout)
 
         if (savedInstanceState == null) {
             settingsFragment = SettingsFragment() // Empty constructor!
@@ -95,13 +77,16 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
                 .beginTransaction()
                 .replace(R.id.settings_layout, settingsFragment)
                 .commit()
-            title = getString(R.string.settings_title)
+            IosUi.setTitle(this, getString(R.string.settings_title))
         } else {
-            title = savedInstanceState.getCharSequence(TITLE_TAG)
+            IosUi.setTitle(this, savedInstanceState.getCharSequence(TITLE_TAG))
         }
+        IosUi.setCompact(this, supportFragmentManager.backStackEntryCount > 0)
         supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
-                setTitle(R.string.settings_title)
+            val isRoot = supportFragmentManager.backStackEntryCount == 0
+            IosUi.setCompact(this, !isRoot)
+            if (isRoot) {
+                IosUi.setTitle(this, getString(R.string.settings_title))
             }
         }
 
@@ -136,7 +121,8 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
             .replace(R.id.settings_layout, fragment)
             .addToBackStack(null)
             .commit()
-        title = pref.title
+        IosUi.setTitle(this, pref.title)
+        IosUi.setCompact(this, true)
 
         // Save user settings fragment for later
         if (fragment is UserSettingsFragment) {

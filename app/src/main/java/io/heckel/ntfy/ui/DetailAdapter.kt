@@ -13,7 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.cardview.widget.CardView
+import com.google.android.material.card.MaterialCardView
 import androidx.constraintlayout.helper.widget.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
@@ -92,7 +92,7 @@ class DetailAdapter(private val activity: Activity, private val lifecycleScope: 
         RecyclerView.ViewHolder(itemView) {
         private var notification: Notification? = null
         private val layout: View = itemView.findViewById(R.id.detail_item_layout)
-        private val cardView: CardView = itemView.findViewById(R.id.detail_item_card)
+        private val cardView: MaterialCardView = itemView.findViewById(R.id.detail_item_card)
         private val priorityImageView: ImageView = itemView.findViewById(R.id.detail_item_priority_image)
         private val dateView: TextView = itemView.findViewById(R.id.detail_item_date_text)
         private val titleView: TextView = itemView.findViewById(R.id.detail_item_title_text)
@@ -150,11 +150,12 @@ class DetailAdapter(private val activity: Activity, private val lifecycleScope: 
             } else {
                 tagsView.visibility = View.GONE
             }
-            if (selected.contains(notification.id)) {
-                cardView.setCardBackgroundColor(Colors.cardSelectedBackgroundColor(context))
-            } else {
-                cardView.setCardBackgroundColor(Colors.cardBackgroundColor(context))
-            }
+            val isSelected = selected.contains(notification.id)
+            cardView.setCardBackgroundColor(
+                if (isSelected) Colors.cardSelectedBackgroundColor(context) else Colors.cardBackgroundColor(context)
+            )
+            cardView.strokeWidth = if (isSelected) (1.5f * context.resources.displayMetrics.density).toInt() else 0
+            cardView.strokeColor = Colors.primary(context)
             val attachment = notification.attachment
             val attachmentFileStat = maybeFileStat(context, attachment?.contentUri)
             val iconFileStat = maybeFileStat(context, notification.icon?.contentUri)

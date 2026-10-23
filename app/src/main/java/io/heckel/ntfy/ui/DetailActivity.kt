@@ -145,27 +145,14 @@ class DetailActivity : AppCompatActivity(), NotificationFragment.NotificationSet
         notifier = NotificationService(this)
         appBaseUrl = getString(R.string.app_base_url)
 
-        val toolbarLayout = findViewById<View>(R.id.app_bar_drawer)
-        val dynamicColors = repository.getDynamicColorsEnabled()
-        val darkMode = isDarkThemeOn(this)
-        val statusBarColor = Colors.statusBarNormal(this, dynamicColors, darkMode)
-        toolbarLayout.setBackgroundColor(statusBarColor)
+        val appBarLayout = findViewById<com.google.android.material.appbar.AppBarLayout>(R.id.app_bar_drawer)
+        toolbar = IosUi.setupAppBar(this, appBarLayout, compact = true)
+        toolbarTextColor = Colors.toolbarTextColor(this, false, isDarkThemeOn(this))
 
         // Set collapse icon (back arrow when search is expanded) with proper tint
-        toolbarTextColor = Colors.toolbarTextColor(this, dynamicColors, darkMode)
         val collapseIcon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_white_24dp)?.mutate()
         collapseIcon?.setTint(toolbarTextColor)
-
-        toolbar = toolbarLayout.findViewById(R.id.toolbar)
-        toolbar.setTitleTextColor(toolbarTextColor)
-        toolbar.setNavigationIconTint(toolbarTextColor)
-        toolbar.overflowIcon?.setTint(toolbarTextColor)
         toolbar.collapseIcon = collapseIcon
-        setSupportActionBar(toolbar)
-        
-        // Set system status bar appearance
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
-            Colors.shouldUseLightStatusBar(dynamicColors, darkMode)
 
         // Set detail activity background: use theme background for dynamic colors, static gray for non-dynamic
         val detailContentLayout = findViewById<View>(R.id.detail_content_layout)
@@ -210,7 +197,7 @@ class DetailActivity : AppCompatActivity(), NotificationFragment.NotificationSet
         val baseUrl = extractBaseUrl(url, secure)
         val topic = url.pathSegments.first()
 
-        title = topicShortUrl(baseUrl, topic)
+        IosUi.setTitle(this, topicShortUrl(baseUrl, topic))
 
         // Subscribe to topic if it doesn't already exist
         lifecycleScope.launch(Dispatchers.IO) {
@@ -289,7 +276,7 @@ class DetailActivity : AppCompatActivity(), NotificationFragment.NotificationSet
         // Set title
         val subscriptionBaseUrl = intent.getStringExtra(MainActivity.EXTRA_SUBSCRIPTION_BASE_URL) ?: return
         val topicUrl = topicShortUrl(subscriptionBaseUrl, subscriptionTopic)
-        title = subscriptionDisplayName
+        IosUi.setTitle(this, subscriptionDisplayName)
 
         // Set "how to instructions"
         val howToExample: TextView = findViewById(R.id.detail_how_to_example)
@@ -313,9 +300,10 @@ class DetailActivity : AppCompatActivity(), NotificationFragment.NotificationSet
         
         // Apply window insets to ensure content is not covered by navigation bar
         mainList.clipToPadding = false
+        val listBottomPadding = resources.getDimensionPixelSize(R.dimen.ios_list_bottom_padding)
         ViewCompat.setOnApplyWindowInsetsListener(mainList) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updatePadding(bottom = systemBars.bottom)
+            v.updatePadding(bottom = systemBars.bottom + listBottomPadding)
             insets
         }
 
@@ -871,7 +859,7 @@ class DetailActivity : AppCompatActivity(), NotificationFragment.NotificationSet
 
     private fun updateTitle(subscriptionDisplayName: String) {
         runOnUiThread {
-            title = subscriptionDisplayName
+            IosUi.setTitle(this, subscriptionDisplayName)
         }
     }
 

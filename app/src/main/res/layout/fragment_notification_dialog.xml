@@ -1,84 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp">
 
     <TextView
-            android:id="@+id/notification_dialog_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:text="@string/notification_dialog_title"
-            android:textAlignment="viewStart"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:paddingStart="5dp" android:paddingEnd="5dp"
-            android:textColor="?android:attr/textColorPrimary" />
+        android:id="@+id/notification_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="10dp"
+        android:text="@string/notification_dialog_title"
+        android:textAlignment="viewStart"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_dialog_title">
+
+        <RadioButton
+            android:id="@+id/notification_dialog_30min"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/notification_dialog_title"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="10dp">
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_30min"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
         <RadioButton
-                android:text="@string/notification_dialog_30min"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_30min"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
+            android:id="@+id/notification_dialog_1h"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_1h"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
         <RadioButton
-                android:text="@string/notification_dialog_1h"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_1h"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
+            android:id="@+id/notification_dialog_2h"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_2h"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
         <RadioButton
-                android:text="@string/notification_dialog_2h"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_2h"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
+            android:id="@+id/notification_dialog_8h"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_8h"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
         <RadioButton
-                android:text="@string/notification_dialog_8h"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_8h"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
+            android:id="@+id/notification_dialog_tomorrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_tomorrow"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
         <RadioButton
-                android:text="@string/notification_dialog_tomorrow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_tomorrow"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
-        <RadioButton
-                android:text="@string/notification_dialog_forever"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/notification_dialog_forever"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:layout_marginTop="-3dp" android:layout_marginBottom="-3dp"
-                android:textAppearance="?android:attr/textAppearanceListItem"
-                android:paddingStart="5dp"
-        />
+            android:id="@+id/notification_dialog_forever"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:buttonTint="?attr/colorPrimary"
+            android:minHeight="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/notification_dialog_forever"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

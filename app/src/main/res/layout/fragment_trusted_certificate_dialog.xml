@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="@color/ios_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/trusted_certificate_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorSurface"
+        android:background="@color/ios_background"
         app:elevation="0dp"
         app:liftOnScroll="false">
 
@@ -19,12 +19,13 @@
             android:id="@+id/trusted_certificate_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorSurface"
+            android:background="@color/ios_background"
             android:paddingStart="0dp"
             android:paddingEnd="12dp"
             app:navigationIcon="@drawable/ic_close_white_24dp"
             app:navigationIconTint="?attr/colorOnSurface"
             app:title="@string/trusted_certificate_dialog_title"
+            app:titleCentered="true"
             app:titleTextColor="?attr/colorOnSurface"
             app:menu="@menu/menu_trusted_certificate_dialog" />
 
@@ -79,7 +80,7 @@
                     android:id="@+id/trusted_certificate_error_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/holo_red_dark"
+                    android:textColor="?attr/colorError"
                     android:textSize="14sp"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
@@ -120,7 +121,7 @@
                         android:text="@string/trusted_certificate_dialog_security_title"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/holo_orange_dark"
+                        android:textColor="@color/ios_orange"
                         android:gravity="center"
                         android:paddingStart="4dp"
                         android:paddingEnd="4dp"
@@ -155,7 +156,7 @@
                     android:id="@+id/trusted_certificate_warning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/holo_red_dark"
+                    android:textColor="?attr/colorError"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:paddingStart="4dp"
@@ -170,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/common_service_url"
                     android:textSize="12sp"
-                    android:textColor="?android:textColorSecondary"
+                    android:textColor="@color/ios_label_secondary"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:layout_marginTop="16dp"
@@ -193,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/common_certificate_subject"
                     android:textSize="12sp"
-                    android:textColor="?android:textColorSecondary"
+                    android:textColor="@color/ios_label_secondary"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:layout_marginTop="16dp" />
@@ -214,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/common_certificate_issuer"
                     android:textSize="12sp"
-                    android:textColor="?android:textColorSecondary"
+                    android:textColor="@color/ios_label_secondary"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:layout_marginTop="16dp" />
@@ -235,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/common_certificate_fingerprint"
                     android:textSize="12sp"
-                    android:textColor="?android:textColorSecondary"
+                    android:textColor="@color/ios_label_secondary"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:layout_marginTop="16dp" />
@@ -269,7 +270,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/common_certificate_valid_from"
                             android:textSize="12sp"
-                            android:textColor="?android:textColorSecondary"
+                            android:textColor="@color/ios_label_secondary"
                             android:paddingStart="4dp"
                             android:paddingEnd="4dp" />
 
@@ -295,7 +296,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/common_certificate_valid_until"
                             android:textSize="12sp"
-                            android:textColor="?android:textColorSecondary"
+                            android:textColor="@color/ios_label_secondary"
                             android:paddingStart="4dp"
                             android:paddingEnd="4dp" />
 

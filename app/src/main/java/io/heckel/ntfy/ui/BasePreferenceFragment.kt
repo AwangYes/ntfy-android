@@ -22,6 +22,7 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
         // Apply window insets to ensure content is not covered by navigation bar
         listView?.let { recyclerView ->
             recyclerView.clipToPadding = false
+            recyclerView.addItemDecoration(PreferenceCardDecoration(requireContext()))
             ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 v.updatePadding(bottom = systemBars.bottom)

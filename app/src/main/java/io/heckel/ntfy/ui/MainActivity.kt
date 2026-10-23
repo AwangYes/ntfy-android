@@ -149,36 +149,26 @@ class MainActivity : AppCompatActivity(), AddFragment.SubscribeListener, Notific
         dispatcher = NotificationDispatcher(this, repository)
         appBaseUrl = getString(R.string.app_base_url)
 
-        // Action bar
-        val toolbarLayout = findViewById<AppBarLayout>(R.id.app_bar_drawer)
-        val dynamicColors = repository.getDynamicColorsEnabled()
-        val darkMode = isDarkThemeOn(this)
-        val statusBarColor = Colors.statusBarNormal(this, dynamicColors, darkMode)
-        val toolbarTextColor = Colors.toolbarTextColor(this, dynamicColors, darkMode)
-        toolbarLayout.setBackgroundColor(statusBarColor)
-        
-        val toolbar = toolbarLayout.findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
-        toolbar.setTitleTextColor(toolbarTextColor)
-        toolbar.setNavigationIconTint(toolbarTextColor)
-        toolbar.overflowIcon?.setTint(toolbarTextColor)
-        setSupportActionBar(toolbar)
-        title = getString(R.string.main_action_bar_title)
-        
-        // Set system status bar appearance
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
-            Colors.shouldUseLightStatusBar(dynamicColors, darkMode)
+        // iOS-style navigation bar and large title
+        val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_drawer)
+        IosUi.setupAppBar(this, appBarLayout)
+        IosUi.setTitle(this, getString(R.string.main_action_bar_title))
 
         // Floating action button ("+")
         fab = findViewById(R.id.fab)
         fab.setOnClickListener {
             onSubscribeButtonClick()
         }
-        
+        findViewById<Button>(R.id.main_empty_add_button).setOnClickListener {
+            onSubscribeButtonClick()
+        }
+
         // Add bottom padding to FAB to account for navigation bar
+        val fabMargin = resources.getDimensionPixelSize(R.dimen.fab_margin)
         ViewCompat.setOnApplyWindowInsetsListener(fab) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val layoutParams = view.layoutParams as androidx.constraintlayout.widget.ConstraintLayout.LayoutParams
-            layoutParams.bottomMargin = systemBars.bottom
+            layoutParams.bottomMargin = systemBars.bottom + fabMargin
             view.layoutParams = layoutParams
             insets
         }
@@ -197,19 +187,16 @@ class MainActivity : AppCompatActivity(), AddFragment.SubscribeListener, Notific
         adapter = MainAdapter(
             repository,
             onSubscriptionClick,
-            onSubscriptionLongClick,
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_circle, theme)!!.apply {
-                setTint(Colors.primary(this@MainActivity))
-            },
-            Colors.onPrimary(this)
+            onSubscriptionLongClick
         )
         mainList.adapter = adapter
         
         // Apply window insets to ensure content is not covered by navigation bar
         mainList.clipToPadding = false
+        val listBottomPadding = resources.getDimensionPixelSize(R.dimen.ios_list_bottom_padding)
         ViewCompat.setOnApplyWindowInsetsListener(mainList) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updatePadding(bottom = systemBars.bottom)
+            v.updatePadding(bottom = systemBars.bottom + listBottomPadding)
             insets
         }
 

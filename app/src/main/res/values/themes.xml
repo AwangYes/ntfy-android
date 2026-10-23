@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
@@ -47,6 +48,31 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
 
+        <!-- iOS-like system chrome and typography -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:windowBackground">@color/ios_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">@bool/ios_light_system_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/ios_light_system_bars</item>
+        <item name="colorControlHighlight">@color/ios_ripple</item>
+        <item name="actionBarSize">@dimen/ios_nav_bar_height</item>
+        <item name="dialogPreferredPadding">@dimen/ios_screen_padding</item>
+        <item name="actionMenuTextColor">?attr/colorPrimary</item>
+
+        <!-- Rounded, low-elevation controls -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Ios.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Ios.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Ios.Large</item>
+        <item name="materialButtonStyle">@style/Widget.Ios.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Ios.Button.Outlined</item>
+        <item name="materialCardViewStyle">@style/Widget.Ios.Card</item>
+        <item name="textInputStyle">@style/Widget.Ios.TextInputLayout</item>
+        <item name="floatingActionButtonStyle">@style/FloatingActionButton</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Ios.MaterialAlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Ios.BottomSheetDialog</item>
+
         <item name="switchPreferenceCompatStyle">@style/MaterialSwitch</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="searchViewStyle">@style/AppSearchViewStyle</item>
@@ -54,6 +80,174 @@
         <item name="actionModeStyle">@style/ActionMode</item>
         <item name="actionModeCloseButtonStyle">@style/ActionModeCloseButtonStyle</item>
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.Ios</item>
+    </style>
+
+    <!-- Shared shapes -->
+    <style name="ShapeAppearance.Ios.Small" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/ios_card_radius</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Large" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Pill" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Typography -->
+    <style name="TextAppearance.Ios.LargeTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.NavTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.CardTitle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.Body" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.Footnote" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/ios_label_secondary</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/ios_label_tertiary</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.Ios.SectionHeader" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/ios_label_secondary</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <!-- Buttons -->
+    <style name="Widget.Ios.Button" parent="Widget.Material3.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/ios_control_radius</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="elevation">0dp</item>
+        <item name="rippleColor">@color/ios_ripple</item>
+    </style>
+    <style name="Widget.Ios.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="rippleColor">@color/ios_ripple</item>
+    </style>
+    <style name="Widget.Ios.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="cornerRadius">@dimen/ios_control_radius</item>
+        <item name="strokeColor">@color/ios_separator</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- Cards and inputs -->
+    <style name="Widget.Ios.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/ios_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Medium</item>
+        <item name="rippleColor">@color/ios_ripple</item>
+    </style>
+    <style name="Widget.Ios.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/ios_card</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="android:textColorHint">@color/ios_label_secondary</item>
+    </style>
+    <style name="Widget.Ios.TextInputLayout.OutlinedBox" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+    </style>
+    <style name="Widget.Ios.TextInputLayout.OutlinedBox.ExposedDropdownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- Dialogs -->
+    <style name="ThemeOverlay.Ios.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="materialAlertDialogContainerStyle">@style/Widget.Ios.MaterialAlertDialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Ios.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Ios.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Ios.DialogButton</item>
+    </style>
+    <style name="ThemeOverlay.Ios.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Ios.BottomSheet</item>
+    </style>
+    <style name="Widget.Ios.MaterialAlertDialog" parent="Widget.MaterialComponents.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Large</item>
+        <item name="backgroundTint">@color/ios_card</item>
+    </style>
+    <style name="Widget.Ios.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Large</item>
+        <item name="backgroundTint">@color/ios_card</item>
+    </style>
+    <style name="Widget.Ios.DialogButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow" />
@@ -61,6 +255,7 @@
     <!-- SearchView style without the hint icon -->
     <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView.ActionBar">
         <item name="searchHintIcon">@null</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
     </style>
 
     <style name="DangerText" parent="@android:style/TextAppearance">
@@ -70,58 +265,76 @@
     <style name="FloatingActionButton" parent="@style/Widget.Material3.FloatingActionButton.Primary">
         <item name="backgroundTint">?attr/colorPrimary</item>
         <item name="tint">?attr/colorOnPrimary</item>
+        <item name="elevation">4dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Pill</item>
     </style>
 
-    <style name="CardView" parent="@style/Widget.Material3.CardView.Elevated" />
+    <style name="CardView" parent="@style/Widget.Ios.Card" />
 
     <style name="CardViewBackground" />
 
-    <!-- Rounded corners in images, see https://stackoverflow.com/a/61960983/1440785 -->
+    <!-- Rounded corners in images -->
     <style name="roundedCornersImageView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">5dp</item>
+        <item name="cornerSize">12dp</item>
     </style>
 
-    <!-- Material Design 3 switches in the preferences -->
+    <!-- Material switches in the preferences -->
     <style name="MaterialSwitch" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/view_preference_switch</item>
+    </style>
+
+    <!-- Settings list typography -->
+    <style name="PreferenceThemeOverlay.Ios" parent="PreferenceThemeOverlay">
+        <item name="preferenceStyle">@style/Preference.Ios</item>
+        <item name="preferenceCategoryStyle">@style/Preference.Ios.Category</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.Ios</item>
+    </style>
+    <style name="Preference.Ios" parent="@style/Preference">
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Preference.Ios.Category" parent="@style/Preference.Category">
+        <item name="android:textColor">@color/ios_label_secondary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+    <style name="Preference.SwitchPreferenceCompat.Ios" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/view_preference_switch</item>
     </style>
 
     <!-- Action mode colors -->
     <style name="ActionMode" parent="@style/Widget.AppCompat.ActionMode">
-        <item name="background">?attr/colorPrimary</item>
+        <item name="background">?attr/colorSurface</item>
         <item name="titleTextStyle">@style/ActionModeTitle</item>
     </style>
-
     <style name="ActionModeTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionMode.Title">
-        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
-
     <style name="ActionModeCloseButtonStyle" parent="Widget.AppCompat.ActionButton.CloseMode">
-        <item name="android:tint">@android:color/white</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
     </style>
 
-    <!-- Banner style with reduced corner radius -->
-    <style name="BannerCardStyle" parent="Widget.Material3.CardView.Elevated">
-        <item name="shapeAppearanceOverlay">@style/BannerShapeAppearance</item>
+    <!-- Inset warning cards -->
+    <style name="BannerCardStyle" parent="Widget.Ios.Card">
+        <item name="android:layout_marginStart">@dimen/ios_screen_padding</item>
+        <item name="android:layout_marginEnd">@dimen/ios_screen_padding</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="cardBackgroundColor">@color/ios_orange_tint</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Medium</item>
     </style>
 
-    <style name="BannerShapeAppearance">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
-    </style>
-
-    <!-- Full-screen dialog style for Material 3 compliance -->
+    <!-- Full-screen dialog style -->
     <style name="Theme.App.FullScreenDialog" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="android:windowBackground">?attr/colorSurface</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/ios_background</item>
+        <item name="android:windowLightStatusBar">@bool/ios_light_system_bars</item>
         <item name="android:windowAnimationStyle">@style/Animation.App.FullScreenDialog</item>
     </style>
-
-    <!-- Slide animation for full-screen dialog -->
     <style name="Animation.App.FullScreenDialog" parent="Animation.AppCompat.Dialog">
         <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
