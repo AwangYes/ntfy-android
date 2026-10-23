@@ -3,7 +3,7 @@
     android:id="@android:id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="20dp"
+    android:paddingStart="32dp"
     android:paddingTop="16dp"
     android:paddingEnd="20dp"
     android:paddingBottom="7dp"
