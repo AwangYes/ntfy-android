@@ -36,5 +36,6 @@
 - 触发：push 到 `main` / `feature/**`、pull request、手动 `workflow_dispatch`
 - 命令：`./gradlew :app:assembleFdroidDebug :app:lintFdroidDebug`
 - 产物：`ntfy-ios-ui-fdroid-debug`（APK）与 lint reports
+- UI 回归截图：`.github/workflows/ui-screenshots.yml`（main push 或手动触发），在 Android 34 模拟器上启动 App 并上传 8 张浅色/深色截图
 
 本仓库不要求在本地运行 Gradle。
