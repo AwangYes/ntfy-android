@@ -1,6 +1,10 @@
 name: UI Screenshots
 
 on:
+  push:
+    branches:
+      - main
+      - "feature/ios-style-ui"
   workflow_dispatch:
 
 permissions:
