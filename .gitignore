@@ -59,7 +59,4 @@ proguard-project.txt
 .idea
 
 # Local visual QA artifacts
-/screenshots/
-/screenshots2/
-/screenshots3/
 /screenshots*/
