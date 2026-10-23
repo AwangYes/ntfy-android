@@ -27,6 +27,7 @@
                 app:defaultValue="2592000"/>
         <SwitchPreferenceCompat
                 app:layout="@layout/preference_ios"
+                app:iconSpaceReserved="false"
                 app:widgetLayout="@layout/view_preference_switch"
                 app:key="@string/settings_notifications_insistent_max_priority_key"
                 app:title="@string/settings_notifications_insistent_max_priority_title"
@@ -58,6 +59,7 @@
                 app:defaultValue="-1"/>
         <SwitchPreferenceCompat
                 app:layout="@layout/preference_ios"
+                app:iconSpaceReserved="false"
                 app:widgetLayout="@layout/view_preference_switch"
                 app:key="@string/settings_general_message_bar_key"
                 app:title="@string/settings_general_message_bar_title"
@@ -104,18 +106,21 @@
             app:fragment="io.heckel.ntfy.ui.CertificateSettingsFragment"/>
         <SwitchPreferenceCompat
             app:layout="@layout/preference_ios"
+                app:iconSpaceReserved="false"
             app:widgetLayout="@layout/view_preference_switch"
             app:key="@string/settings_advanced_broadcast_key"
             app:title="@string/settings_advanced_broadcast_title"
             app:enabled="true"/>
         <SwitchPreferenceCompat
             app:layout="@layout/preference_ios"
+                app:iconSpaceReserved="false"
             app:widgetLayout="@layout/view_preference_switch"
             app:key="@string/settings_advanced_unifiedpush_key"
             app:title="@string/settings_advanced_unifiedpush_title"
             app:enabled="true"/>
         <SwitchPreferenceCompat
                 app:layout="@layout/preference_ios"
+                app:iconSpaceReserved="false"
                 app:widgetLayout="@layout/view_preference_switch"
                 app:key="@string/settings_advanced_record_logs_key"
                 app:title="@string/settings_advanced_record_logs_title"

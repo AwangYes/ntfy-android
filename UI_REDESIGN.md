@@ -19,9 +19,9 @@
 
 ## 页面调整
 
-- **订阅首页**：34sp 大标题、52dp 紧凑导航栏、独立圆角订阅卡片、44dp 图标 tile、红色未读 badge、iOS 空态卡片、圆形 FAB、inset Banner。
+- **订阅首页**：34sp 大标题、52dp 紧凑导航栏、独立圆角订阅卡片、44dp 图标 tile、红色未读 badge、iOS 空态卡片、圆形 FAB、inset Banner；右上角更多按钮改为 iOS 底部操作表（action sheet），不再使用 Android 锚定式 overflow popup。
 - **消息详情**：紧凑导航标题、18dp 圆角通知卡片、17sp 标题/15sp 正文、12dp 图片圆角、iOS composer 输入条。
-- **设置**：顶层大标题、嵌套页紧凑标题、Preference 行绘制为 inset 圆角卡、蓝色 accent、绿色 switch。
+- **设置**：顶层大标题、嵌套页紧凑标题、所有 Preference 行统一使用 `preference_ios.xml` 圆角卡布局、蓝色 accent、iOS 绿色 switch、13sp footnote summary。
 - **新建订阅 / 发布 / 用户 / 证书 / 连接错误等全屏弹层**：grouped background、居中标题、蓝色文字操作、14dp 表单圆角、移除历史负 margin 和 Holo 颜色。
 - **分享页**：重写为内容卡 + 目标卡的分组表单，TextInputLayout 包裹正文和 topic，保留原有 `share_*` View ID 与上传/校验逻辑。
 - **深色模式**：完整的 night 色板、系统栏图标明暗适配、卡片/输入/弹层表面色独立定义。
