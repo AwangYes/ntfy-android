@@ -63,12 +63,22 @@ jobs:
             adb shell input keyevent 4
             sleep 1
             adb exec-out screencap -p > screenshots/03-add-light.png
-            adb shell input keyevent 4
-            sleep 1
+            adb shell am force-stop io.heckel.ntfy.debug
+            adb shell am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.MainActivity
+            sleep 3
 
-            adb shell run-as io.heckel.ntfy.debug am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.SettingsActivity
+            # Open the overflow menu and tap Settings
+            adb shell input tap 1006 208
+            sleep 1
+            adb exec-out screencap -p > screenshots/04-menu-light.png
+            adb shell uiautomator dump /sdcard/window.xml >/dev/null
+            coords=$(adb shell cat /sdcard/window.xml | python3 .github/scripts/find_ui_node.py "Settings" "main_menu_settings")
+            echo "Settings menu coordinates: ${coords:-not found}"
+            if [ -n "$coords" ]; then adb shell input tap $coords; else adb shell input tap 800 300; fi
             sleep 4
-            adb exec-out screencap -p > screenshots/04-settings-light.png
+            adb exec-out screencap -p > screenshots/05-settings-light.png
+            adb shell input keyevent 4
+            sleep 2
 
             adb shell am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.DetailActivity \
               --el subscriptionId 1 \
@@ -77,18 +87,23 @@ jobs:
               --es subscriptionDisplayName "Demo topic" \
               --el subscriptionMutedUntil 0
             sleep 4
-            adb exec-out screencap -p > screenshots/05-detail-light.png
+            adb exec-out screencap -p > screenshots/06-detail-light.png
 
             adb shell cmd uimode night yes
             adb shell am force-stop io.heckel.ntfy.debug
             sleep 2
             adb shell am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.MainActivity
             sleep 4
-            adb exec-out screencap -p > screenshots/06-main-dark.png
+            adb exec-out screencap -p > screenshots/07-main-dark.png
 
-            adb shell run-as io.heckel.ntfy.debug am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.SettingsActivity
+            adb shell input tap 1006 208
+            sleep 1
+            adb shell uiautomator dump /sdcard/window.xml >/dev/null
+            coords=$(adb shell cat /sdcard/window.xml | python3 .github/scripts/find_ui_node.py "Settings" "main_menu_settings")
+            echo "Settings menu coordinates (dark): ${coords:-not found}"
+            if [ -n "$coords" ]; then adb shell input tap $coords; else adb shell input tap 800 300; fi
             sleep 3
-            adb exec-out screencap -p > screenshots/07-settings-dark.png
+            adb exec-out screencap -p > screenshots/08-settings-dark.png
 
       - name: Upload screenshots
         if: always()
