@@ -18,7 +18,6 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@color/ios_background</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowAnimationStyle">@style/Animation.App.FullScreenDialog</item>
     </style>
 </resources>

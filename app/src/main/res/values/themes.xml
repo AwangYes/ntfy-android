@@ -55,7 +55,6 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">@bool/ios_light_system_bars</item>
-        <item name="android:windowLightNavigationBar">@bool/ios_light_system_bars</item>
         <item name="colorControlHighlight">@color/ios_ripple</item>
         <item name="actionBarSize">@dimen/ios_nav_bar_height</item>
         <item name="dialogPreferredPadding">@dimen/ios_screen_padding</item>

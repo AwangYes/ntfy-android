@@ -44,56 +44,82 @@
                 app:layoutManager="LinearLayoutManager"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+    <com.google.android.material.card.MaterialCardView
             android:id="@+id/detail_no_notifications"
+            style="@style/Widget.Ios.Card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
             app:layout_constraintBottom_toTopOf="@id/detail_message_bar"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_sms_gray_48dp"
-                android:id="@+id/detail_no_notifications_image"/>
-        <TextView
-                android:id="@+id/detail_no_notifications_text"
-                android:text="@string/detail_no_notifications_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.38">
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.Ios.CardTitle"
-                android:textSize="20sp"
-                android:padding="10dp" android:gravity="center_horizontal"
-                android:paddingStart="50dp" android:paddingEnd="50dp"/>
-        <TextView
-                android:text="@string/detail_how_to_intro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/detail_how_to_intro"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"/>
-        <TextView
-                android:text="@string/detail_how_to_example"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/detail_how_to_example"
-                android:layout_marginTop="7dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"/>
-        <TextView
-                android:text="@string/detail_how_to_link"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/detail_how_to_link"
-                android:layout_marginTop="7dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:linksClickable="true"
-                android:autoLink="web"/>
-    </LinearLayout>
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+            <ImageView
+                    android:id="@+id/detail_no_notifications_image"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/bg_ios_empty_tile"
+                    android:contentDescription="@null"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/ic_sms_gray_48dp"
+                    app:tint="?attr/colorPrimary" />
+
+            <TextView
+                    android:id="@+id/detail_no_notifications_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/detail_no_notifications_text"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:id="@+id/detail_how_to_intro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/detail_how_to_intro"
+                    android:textAppearance="@style/TextAppearance.Ios.Footnote"
+                    android:textSize="14sp" />
+
+            <TextView
+                    android:id="@+id/detail_how_to_example"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/detail_how_to_example"
+                    android:textAppearance="@style/TextAppearance.Ios.Footnote"
+                    android:textSize="14sp" />
+
+            <TextView
+                    android:id="@+id/detail_how_to_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:autoLink="web"
+                    android:gravity="center"
+                    android:linksClickable="true"
+                    android:text="@string/detail_how_to_link"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="14sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <include
         android:id="@+id/detail_message_bar"

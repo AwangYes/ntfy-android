@@ -1,6 +1,7 @@
 package io.heckel.ntfy.ui
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -109,10 +110,13 @@ class MainAdapter(
             val showMutedForeverIcon = (subscription.mutedUntil == 1L || globalMutedUntil == 1L) && !isUnifiedPush
             val showMutedUntilIcon = !showMutedForeverIcon && (subscription.mutedUntil > 1L || globalMutedUntil > 1L) && !isUnifiedPush
             if (subscription.icon != null) {
+                imageView.imageTintList = null
                 imageView.clearColorFilter()
                 imageView.setImageBitmap(subscription.icon.readBitmapFromUriOrNull(context))
             } else {
-                imageView.setColorFilter(ContextCompat.getColor(context, R.color.md_theme_primary))
+                imageView.imageTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.md_theme_primary)
+                )
                 imageView.setImageResource(R.drawable.ic_sms_gray_24dp)
             }
             nameView.text = displayName(appBaseUrl, subscription)
