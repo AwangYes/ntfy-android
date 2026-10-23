@@ -77,12 +77,7 @@ jobs:
             adb shell input keyevent 4
             sleep 2
 
-            adb shell am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.DetailActivity \
-              --el subscriptionId 1 \
-              --es subscriptionBaseUrl "https://ntfy.sh" \
-              --es subscriptionTopic "demo-topic" \
-              --es subscriptionDisplayName "Demo topic" \
-              --el subscriptionMutedUntil 0
+            adb shell am start -W -n io.heckel.ntfy.debug/io.heckel.ntfy.ui.DetailActivity --el subscriptionId 1 --es subscriptionBaseUrl "https://ntfy.sh" --es subscriptionTopic "demo-topic" --es subscriptionDisplayName "Demo topic" --el subscriptionMutedUntil 0
             sleep 4
             adb exec-out screencap -p > screenshots/06-detail-light.png
 

@@ -72,7 +72,6 @@
         <item name="floatingActionButtonStyle">@style/FloatingActionButton</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.Ios.MaterialAlertDialog</item>
 
-        <item name="switchPreferenceCompatStyle">@style/MaterialSwitch</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="searchViewStyle">@style/AppSearchViewStyle</item>
 
@@ -273,29 +272,27 @@
         <item name="cornerSize">12dp</item>
     </style>
 
-    <!-- Material switches in the preferences -->
-    <style name="MaterialSwitch" parent="@style/Preference.SwitchPreferenceCompat.Material">
-        <item name="widgetLayout">@layout/view_preference_switch</item>
-    </style>
-
-    <!-- Settings list typography -->
+    <!-- iOS-style preference rows with a consistent inset and type scale. -->
     <style name="PreferenceThemeOverlay.Ios" parent="PreferenceThemeOverlay">
         <item name="preferenceStyle">@style/Preference.Ios</item>
+        <item name="listPreferenceStyle">@style/Preference.Ios.List</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.Ios.Switch</item>
+        <item name="editTextPreferenceStyle">@style/Preference.Ios.EditText</item>
         <item name="preferenceCategoryStyle">@style/Preference.Ios.Category</item>
-        <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.Ios</item>
     </style>
     <style name="Preference.Ios" parent="@style/Preference">
-        <item name="android:textColor">?attr/colorOnBackground</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout">@layout/preference_ios</item>
     </style>
+    <style name="Preference.Ios.List" parent="@style/Preference.Ios" />
+    <style name="Preference.Ios.Switch" parent="@style/Preference.Ios">
+        <item name="widgetLayout">@layout/view_preference_switch</item>
+    </style>
+    <style name="Preference.Ios.EditText" parent="@style/Preference.Ios" />
     <style name="Preference.Ios.Category" parent="@style/Preference.Category">
         <item name="android:textColor">@color/ios_label_secondary</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.04</item>
-    </style>
-    <style name="Preference.SwitchPreferenceCompat.Ios" parent="@style/Preference.SwitchPreferenceCompat.Material">
-        <item name="widgetLayout">@layout/view_preference_switch</item>
     </style>
 
     <!-- Action mode colors -->
