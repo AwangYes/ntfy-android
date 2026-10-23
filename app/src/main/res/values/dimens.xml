@@ -10,7 +10,7 @@
     <dimen name="ios_icon_tile_radius">12dp</dimen>
     <dimen name="ios_separator_height">0.5dp</dimen>
     <dimen name="ios_list_bottom_padding">96dp</dimen>
-    <dimen name="ios_preference_inset">12dp</dimen>
+    <dimen name="ios_preference_inset">16dp</dimen>
     <dimen name="ios_preference_gap">2dp</dimen>
     <dimen name="ios_preference_group_gap">8dp</dimen>
     <dimen name="ios_preference_top">8dp</dimen>

@@ -29,6 +29,7 @@ object IosUi {
         toolbar.overflowIcon?.setTint(textColor)
 
         activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_ios_chevron_left)
         setCompact(activity, compact)
 
         WindowInsetsControllerCompat(activity.window, activity.window.decorView).apply {
