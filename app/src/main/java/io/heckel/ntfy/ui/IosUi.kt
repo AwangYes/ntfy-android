@@ -40,6 +40,7 @@ object IosUi {
 
     fun setTitle(activity: AppCompatActivity, title: CharSequence?) {
         activity.title = title
+        activity.supportActionBar?.title = title
         activity.findViewById<TextView>(R.id.app_bar_large_title)?.text = title
     }
 

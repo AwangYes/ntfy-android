@@ -25,6 +25,7 @@
             app:navigationIcon="@drawable/ic_close_white_24dp"
             app:navigationIconTint="?attr/colorOnSurface"
             app:titleCentered="true"
+            app:titleTextAppearance="@style/TextAppearance.Ios.NavTitle"
             app:titleTextColor="?attr/colorOnSurface"
             app:menu="@menu/menu_publish_dialog" />
 
@@ -65,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textAppearance="@style/TextAppearance.Ios.Footnote"
                     android:textColor="?attr/colorPrimary"
                     android:visibility="gone"/>
 

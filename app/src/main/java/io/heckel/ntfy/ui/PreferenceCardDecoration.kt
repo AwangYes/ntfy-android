@@ -1,5 +1,6 @@
 package io.heckel.ntfy.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -14,6 +15,7 @@ import io.heckel.ntfy.R
  * Draws each visible preference row on an inset iOS-style card. Keeping this in
  * an ItemDecoration avoids replacing AndroidX Preference's internal row layouts.
  */
+@SuppressLint("RestrictedApi") // PreferenceGroupAdapter is the only public way to inspect row types.
 class PreferenceCardDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private val cardPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = ContextCompat.getColor(context, R.color.ios_card)

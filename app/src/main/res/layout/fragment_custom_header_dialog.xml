@@ -26,6 +26,7 @@
             app:navigationIconTint="?attr/colorOnSurface"
             app:title="@string/custom_headers_dialog_title_add"
             app:titleCentered="true"
+            app:titleTextAppearance="@style/TextAppearance.Ios.NavTitle"
             app:titleTextColor="?attr/colorOnSurface"
             app:menu="@menu/menu_custom_header_dialog" />
 
