@@ -12,6 +12,7 @@
     <dimen name="ios_list_bottom_padding">96dp</dimen>
     <dimen name="ios_preference_inset">12dp</dimen>
     <dimen name="ios_preference_gap">2dp</dimen>
+    <dimen name="ios_preference_group_gap">8dp</dimen>
     <dimen name="ios_preference_top">8dp</dimen>
     <dimen name="ios_nav_bar_height">52dp</dimen>
     <dimen name="fab_margin">20dp</dimen>

@@ -196,37 +196,39 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Medium</item>
         <item name="rippleColor">@color/ios_ripple</item>
     </style>
-    <style name="Widget.Ios.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
+    <style name="Widget.Ios.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/ios_card</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="boxStrokeColor">@color/ios_textfield_stroke</item>
         <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
-        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="hintTextColor">@color/ios_textfield_hint</item>
         <item name="android:textColorHint">@color/ios_label_secondary</item>
     </style>
     <style name="Widget.Ios.TextInputLayout.OutlinedBox" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxBackgroundColor">@color/ios_card</item>
+        <item name="boxStrokeColor">@color/ios_textfield_stroke</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1.5dp</item>
         <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
-        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="hintTextColor">@color/ios_textfield_hint</item>
     </style>
     <style name="Widget.Ios.TextInputLayout.OutlinedBox.ExposedDropdownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-        <item name="boxStrokeColor">@color/ios_separator</item>
+        <item name="boxBackgroundColor">@color/ios_card</item>
+        <item name="boxStrokeColor">@color/ios_textfield_stroke</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1.5dp</item>
         <item name="boxCornerRadiusTopStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusTopEnd">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomStart">@dimen/ios_control_radius</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/ios_control_radius</item>
-        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="hintTextColor">@color/ios_textfield_hint</item>
     </style>
 
     <!-- Dialogs -->
@@ -295,6 +297,7 @@
         <item name="widgetLayout">@layout/view_preference_switch</item>
     </style>
     <style name="Preference.Ios.Category" parent="@style/Preference.Category">
+        <item name="android:layout">@layout/preference_category_ios</item>
         <item name="android:textColor">@color/ios_label_secondary</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textAllCaps">true</item>

@@ -69,7 +69,7 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
         serviceManager = SubscriberServiceManager(this)
 
         val appBarLayout = findViewById<com.google.android.material.appbar.AppBarLayout>(R.id.app_bar_drawer)
-        IosUi.setupAppBar(this, appBarLayout)
+        IosUi.setupAppBar(this, appBarLayout, compact = true)
 
         if (savedInstanceState == null) {
             settingsFragment = SettingsFragment() // Empty constructor!
@@ -81,11 +81,8 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
         } else {
             IosUi.setTitle(this, savedInstanceState.getCharSequence(TITLE_TAG))
         }
-        IosUi.setCompact(this, supportFragmentManager.backStackEntryCount > 0)
         supportFragmentManager.addOnBackStackChangedListener {
-            val isRoot = supportFragmentManager.backStackEntryCount == 0
-            IosUi.setCompact(this, !isRoot)
-            if (isRoot) {
+            if (supportFragmentManager.backStackEntryCount == 0) {
                 IosUi.setTitle(this, getString(R.string.settings_title))
             }
         }
@@ -122,7 +119,6 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
             .addToBackStack(null)
             .commit()
         IosUi.setTitle(this, pref.title)
-        IosUi.setCompact(this, true)
 
         // Save user settings fragment for later
         if (fragment is UserSettingsFragment) {
