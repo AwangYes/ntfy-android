@@ -26,10 +26,17 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
                 recyclerView.removeItemDecorationAt(0)
             }
             recyclerView.addItemDecoration(PreferenceCardDecoration(requireContext()))
+            val horizontalPadding = resources.getDimensionPixelSize(R.dimen.ios_preference_inset)
             val topPadding = resources.getDimensionPixelSize(R.dimen.ios_preference_top)
+            recyclerView.setPadding(horizontalPadding, topPadding, horizontalPadding, 0)
             ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.updatePadding(top = topPadding, bottom = systemBars.bottom)
+                v.updatePadding(
+                    left = horizontalPadding,
+                    top = topPadding,
+                    right = horizontalPadding,
+                    bottom = systemBars.bottom
+                )
                 insets
             }
         }
