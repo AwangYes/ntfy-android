@@ -138,14 +138,14 @@
                         android:id="@+id/connection_error_dialog_stack_trace"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?attr/colorSurfaceVariant"
+                        android:background="@drawable/bg_ios_field"
                         android:fontFamily="monospace"
                         android:padding="12dp"
                         android:scrollHorizontally="true"
                         android:singleLine="false"
                         android:textAppearance="@style/TextAppearance.Ios.Footnote"
                         android:textColor="?attr/colorOnSurface"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                 </ScrollView>
 

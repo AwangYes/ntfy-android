@@ -71,7 +71,6 @@
         <item name="textInputStyle">@style/Widget.Ios.TextInputLayout</item>
         <item name="floatingActionButtonStyle">@style/FloatingActionButton</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.Ios.MaterialAlertDialog</item>
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Ios.BottomSheetDialog</item>
 
         <item name="switchPreferenceCompatStyle">@style/MaterialSwitch</item>
         <item name="windowActionModeOverlay">true</item>
@@ -226,21 +225,9 @@
 
     <!-- Dialogs -->
     <style name="ThemeOverlay.Ios.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="materialAlertDialogContainerStyle">@style/Widget.Ios.MaterialAlertDialog</item>
         <item name="buttonBarPositiveButtonStyle">@style/Widget.Ios.DialogButton</item>
         <item name="buttonBarNegativeButtonStyle">@style/Widget.Ios.DialogButton</item>
         <item name="buttonBarNeutralButtonStyle">@style/Widget.Ios.DialogButton</item>
-    </style>
-    <style name="ThemeOverlay.Ios.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/Widget.Ios.BottomSheet</item>
-    </style>
-    <style name="Widget.Ios.MaterialAlertDialog" parent="Widget.MaterialComponents.MaterialAlertDialog">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Large</item>
-        <item name="backgroundTint">@color/ios_card</item>
-    </style>
-    <style name="Widget.Ios.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Large</item>
-        <item name="backgroundTint">@color/ios_card</item>
     </style>
     <style name="Widget.Ios.DialogButton" parent="Widget.Material3.Button.TextButton">
         <item name="android:textAllCaps">false</item>

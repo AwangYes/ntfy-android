@@ -53,6 +53,7 @@
     <color name="ios_background">#F2F2F7</color>
     <color name="ios_card">#FFFFFF</color>
     <color name="ios_card_pressed">#E9E9EE</color>
+    <color name="ios_fill">#E5E5EA</color>
     <color name="ios_separator">#C6C6C8</color>
     <color name="ios_label_secondary">#6C6C70</color>
     <color name="ios_label_tertiary">#8E8E93</color>
