@@ -61,6 +61,8 @@
     <color name="ios_badge_text">#FFFFFF</color>
     <color name="ios_orange_tint">#3A2A12</color>
     <color name="ios_orange">#FF9F0A</color>
+    <color name="ios_green">#30D158</color>
+    <color name="ios_switch_off">#3A3A3C</color>
     <color name="ios_red_tint">#5C0A05</color>
     <color name="ios_green_tint">#0B4A1E</color>
     <color name="ios_ripple">#330A84FF</color>

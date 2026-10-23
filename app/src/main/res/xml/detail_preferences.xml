@@ -4,6 +4,8 @@
         app:key="@string/detail_settings_notifications_header_key"
         app:title="@string/settings_notifications_header">
         <SwitchPreferenceCompat
+                app:layout="@layout/preference_ios"
+                app:widgetLayout="@layout/view_preference_switch"
                 app:key="@string/detail_settings_notifications_instant_key"
                 app:title="@string/detail_settings_notifications_instant_title"
                 app:isPreferenceVisible="false"/>
@@ -36,6 +38,8 @@
                 app:defaultValue="-1"
                 app:isPreferenceVisible="false"/> <!-- Same as Repository.INSISTENT_MAX_PRIORITY_USE_GLOBAL -->
         <SwitchPreferenceCompat
+                app:layout="@layout/preference_ios"
+                app:widgetLayout="@layout/view_preference_switch"
                 app:key="@string/detail_settings_notifications_dedicated_channels_key"
                 app:title="@string/detail_settings_notifications_dedicated_channels_title"
                 app:isPreferenceVisible="false"/>
