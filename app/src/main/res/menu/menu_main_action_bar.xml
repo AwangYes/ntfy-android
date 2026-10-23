@@ -23,15 +23,9 @@
         android:title="@string/detail_menu_notifications_disabled_forever"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/main_menu_settings"
-        android:title="@string/main_menu_settings_title" />
-    <item
-        android:id="@+id/main_menu_docs"
-        android:title="@string/main_menu_docs_title" />
-    <item
-        android:id="@+id/main_menu_rate"
-        android:title="@string/main_menu_rate_title" />
-    <item
-        android:id="@+id/main_menu_report_bug"
-        android:title="@string/main_menu_report_bug_title" />
+        android:id="@+id/main_menu_more"
+        android:icon="@drawable/ic_more_horiz_gray_24dp"
+        android:title="@string/message_bar_expand_button_description"
+        app:iconTint="?attr/colorOnBackground"
+        app:showAsAction="always" />
 </menu>

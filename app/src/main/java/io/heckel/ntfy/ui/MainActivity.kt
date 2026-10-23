@@ -45,6 +45,7 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.heckel.ntfy.BuildConfig
@@ -564,14 +565,6 @@ class MainActivity : AppCompatActivity(), AddFragment.SubscribeListener, Notific
         }
         val mutedUntilSeconds = repository.getGlobalMutedUntil()
         runOnUiThread {
-            // Show/hide menu items based on build config
-            val rateAppItem = menu.findItem(R.id.main_menu_rate)
-            val docsItem = menu.findItem(R.id.main_menu_docs)
-            val reportBugItem = menu.findItem(R.id.main_menu_report_bug)
-            rateAppItem.isVisible = BuildConfig.RATE_APP_AVAILABLE
-            docsItem.isVisible = BuildConfig.PAYMENT_LINKS_AVAILABLE // Google Payments Policy, see https://github.com/binwiederhier/ntfy/issues/1463
-            reportBugItem.isVisible = BuildConfig.PAYMENT_LINKS_AVAILABLE // Google Payments Policy, see https://github.com/binwiederhier/ntfy/issues/1463
-
             // Pause notification icons
             val notificationsEnabledItem = menu.findItem(R.id.main_menu_notifications_enabled)
             val notificationsDisabledUntilItem = menu.findItem(R.id.main_menu_notifications_disabled_until)
@@ -615,32 +608,8 @@ class MainActivity : AppCompatActivity(), AddFragment.SubscribeListener, Notific
                 onConnectionErrorClick()
                 true
             }
-            R.id.main_menu_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                true
-            }
-            R.id.main_menu_report_bug -> {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, getString(R.string.main_menu_report_bug_url).toUri())
-                )
-                true
-            }
-            R.id.main_menu_rate -> {
-                try {
-                    startActivity(
-                        Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri())
-                    )
-                } catch (_: ActivityNotFoundException) {
-                    startActivity(
-                        Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$packageName".toUri())
-                    )
-                }
-                true
-            }
-            R.id.main_menu_docs -> {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, getString(R.string.main_menu_docs_url).toUri())
-                )
+            R.id.main_menu_more -> {
+                showMainMenuSheet()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -662,6 +631,67 @@ class MainActivity : AppCompatActivity(), AddFragment.SubscribeListener, Notific
         Log.d(TAG, "Showing connection error dialog")
         val connectionErrorFragment = ConnectionErrorFragment.newInstance()
         connectionErrorFragment.show(supportFragmentManager, ConnectionErrorFragment.TAG)
+    }
+
+    /**
+     * iOS-style action sheet. Keeping these actions in a sheet avoids Android's
+     * anchored overflow popup, which feels out of place in the iOS visual system.
+     */
+    private fun showMainMenuSheet() {
+        val dialog = BottomSheetDialog(this)
+        val sheet = layoutInflater.inflate(R.layout.sheet_main_menu, null)
+
+        fun bind(id: Int, action: () -> Unit) {
+            sheet.findViewById<View>(id).setOnClickListener {
+                dialog.dismiss()
+                action()
+            }
+        }
+
+        bind(R.id.main_sheet_settings) { openSettings() }
+        bind(R.id.main_sheet_docs) { openDocs() }
+        bind(R.id.main_sheet_rate) { openRateApp() }
+        bind(R.id.main_sheet_report) { openReportBug() }
+        bind(R.id.main_sheet_cancel) { dialog.dismiss() }
+
+        val docsVisible = BuildConfig.PAYMENT_LINKS_AVAILABLE
+        val rateVisible = BuildConfig.RATE_APP_AVAILABLE
+        val reportVisible = BuildConfig.PAYMENT_LINKS_AVAILABLE
+        sheet.findViewById<View>(R.id.main_sheet_docs).isVisible = docsVisible
+        sheet.findViewById<View>(R.id.main_sheet_rate).isVisible = rateVisible
+        sheet.findViewById<View>(R.id.main_sheet_report).isVisible = reportVisible
+        sheet.findViewById<View>(R.id.main_sheet_settings_divider).isVisible =
+            docsVisible || rateVisible || reportVisible
+        sheet.findViewById<View>(R.id.main_sheet_docs_divider).isVisible =
+            docsVisible && (rateVisible || reportVisible)
+        sheet.findViewById<View>(R.id.main_sheet_rate_divider).isVisible =
+            rateVisible && reportVisible
+        sheet.findViewById<View>(R.id.main_sheet_report_divider).isVisible = reportVisible
+
+        dialog.setContentView(sheet)
+        dialog.show()
+    }
+
+    private fun openSettings() {
+        startActivity(Intent(this, SettingsActivity::class.java))
+    }
+
+    private fun openDocs() {
+        startActivity(Intent(Intent.ACTION_VIEW, getString(R.string.main_menu_docs_url).toUri()))
+    }
+
+    private fun openReportBug() {
+        startActivity(Intent(Intent.ACTION_VIEW, getString(R.string.main_menu_report_bug_url).toUri()))
+    }
+
+    private fun openRateApp() {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()))
+        } catch (_: ActivityNotFoundException) {
+            startActivity(
+                Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$packageName".toUri())
+            )
+        }
     }
 
     override fun onNotificationMutedUntilChanged(mutedUntilTimestamp: Long) {

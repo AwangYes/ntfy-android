@@ -71,10 +71,7 @@ jobs:
             adb shell input tap 1006 208
             sleep 1
             adb exec-out screencap -p > screenshots/04-menu-light.png
-            adb shell uiautomator dump /sdcard/window.xml >/dev/null
-            coords=$(adb shell cat /sdcard/window.xml | python3 .github/scripts/find_ui_node.py "Settings" "main_menu_settings")
-            echo "Settings menu coordinates: ${coords:-not found}"
-            if [ -n "$coords" ]; then adb shell input tap $coords; else adb shell input tap 800 300; fi
+            adb shell input tap 540 1760
             sleep 4
             adb exec-out screencap -p > screenshots/05-settings-light.png
             adb shell input keyevent 4
@@ -98,10 +95,7 @@ jobs:
 
             adb shell input tap 1006 208
             sleep 1
-            adb shell uiautomator dump /sdcard/window.xml >/dev/null
-            coords=$(adb shell cat /sdcard/window.xml | python3 .github/scripts/find_ui_node.py "Settings" "main_menu_settings")
-            echo "Settings menu coordinates (dark): ${coords:-not found}"
-            if [ -n "$coords" ]; then adb shell input tap $coords; else adb shell input tap 800 300; fi
+            adb shell input tap 540 1760
             sleep 3
             adb exec-out screencap -p > screenshots/08-settings-dark.png
 

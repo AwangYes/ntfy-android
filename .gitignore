@@ -57,3 +57,8 @@ proguard-project.txt
 # Android Studio/IDEA
 *.iml
 .idea
+
+# Local visual QA artifacts
+/screenshots/
+/screenshots2/
+/screenshots3/

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="12dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.Ios.Footnote"
+        android:textColor="@color/ios_label_secondary" />
+
+    <TextView
+        android:id="@+id/main_sheet_settings"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/ios_screen_padding"
+        android:paddingEnd="@dimen/ios_screen_padding"
+        android:text="@string/main_menu_settings_title"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/main_sheet_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ios_separator_height"
+        android:layout_marginStart="@dimen/ios_screen_padding"
+        android:layout_marginEnd="@dimen/ios_screen_padding"
+        android:background="@color/ios_separator" />
+
+    <TextView
+        android:id="@+id/main_sheet_docs"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/ios_screen_padding"
+        android:paddingEnd="@dimen/ios_screen_padding"
+        android:text="@string/main_menu_docs_title"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/main_sheet_docs_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ios_separator_height"
+        android:layout_marginStart="@dimen/ios_screen_padding"
+        android:layout_marginEnd="@dimen/ios_screen_padding"
+        android:background="@color/ios_separator" />
+
+    <TextView
+        android:id="@+id/main_sheet_rate"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/ios_screen_padding"
+        android:paddingEnd="@dimen/ios_screen_padding"
+        android:text="@string/main_menu_rate_title"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/main_sheet_rate_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ios_separator_height"
+        android:layout_marginStart="@dimen/ios_screen_padding"
+        android:layout_marginEnd="@dimen/ios_screen_padding"
+        android:background="@color/ios_separator" />
+
+    <TextView
+        android:id="@+id/main_sheet_report"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/ios_screen_padding"
+        android:paddingEnd="@dimen/ios_screen_padding"
+        android:text="@string/main_menu_report_bug_title"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/main_sheet_report_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ios_separator_height"
+        android:layout_marginStart="@dimen/ios_screen_padding"
+        android:layout_marginEnd="@dimen/ios_screen_padding"
+        android:background="@color/ios_separator" />
+
+    <TextView
+        android:id="@+id/main_sheet_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/notification_dialog_cancel"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+</LinearLayout>
